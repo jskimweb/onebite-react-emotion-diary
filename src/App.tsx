@@ -5,21 +5,17 @@ import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Notfound from "./pages/Notfound";
 
-import emotion1 from "./assets/emotion1.png";
-import emotion2 from "./assets/emotion2.png";
-import emotion3 from "./assets/emotion3.png";
-import emotion4 from "./assets/emotion4.png";
-import emotion5 from "./assets/emotion5.png";
+import { getEmtionImages } from "./utils/get-emotion-images";
 
 function App() {
   return (
     <>
       <div>
-        <img src={emotion1} />
-        <img src={emotion2} />
-        <img src={emotion3} />
-        <img src={emotion4} />
-        <img src={emotion5} />
+        <img src={getEmtionImages(1)} />
+        <img src={getEmtionImages(2)} />
+        <img src={getEmtionImages(3)} />
+        <img src={getEmtionImages(4)} />
+        <img src={getEmtionImages(5)} />
       </div>
       <div>
         <Link to="/">Home</Link>
