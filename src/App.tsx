@@ -4,24 +4,24 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Notfound from "./pages/Notfound";
-
-import { getEmtionImages } from "./utils/get-emotion-images";
+import Header from "./components/Header";
+import Button from "./components/Button";
 
 function App() {
   return (
     <>
-      <div>
-        <img src={getEmtionImages(1)} />
-        <img src={getEmtionImages(2)} />
-        <img src={getEmtionImages(3)} />
-        <img src={getEmtionImages(4)} />
-        <img src={getEmtionImages(5)} />
-      </div>
+      <Header
+        title="Header"
+        leftChild={<Button text="left" type="DEFAULT" onClick={() => {}} />}
+        rightChild={<Button text="right" type="DEFAULT" onClick={() => {}} />}
+      />
+
       <div>
         <Link to="/">Home</Link>
         <Link to="/new">New</Link>
         <Link to="/diary">Diary</Link>
       </div>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
