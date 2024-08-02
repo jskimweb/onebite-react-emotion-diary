@@ -7,7 +7,7 @@ import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 import Notfound from "./pages/Notfound";
 
-interface Item {
+export interface Item {
   id: number;
   createdDate: number;
   emotionId: number;
@@ -39,14 +39,20 @@ interface DiaryDispatchContext {
 
 const MOCK_DATA: Item[] = [
   {
+    id: 3,
+    createdDate: new Date("2024-08-03").getTime(),
+    emotionId: 3,
+    content: "3번 일기 내용",
+  },
+  {
     id: 2,
-    createdDate: new Date().getTime(),
+    createdDate: new Date("2024-08-02").getTime(),
     emotionId: 2,
     content: "2번 일기 내용",
   },
   {
     id: 1,
-    createdDate: new Date().getTime(),
+    createdDate: new Date("2024-07-02").getTime(),
     emotionId: 1,
     content: "1번 일기 내용",
   },
@@ -67,8 +73,8 @@ function reducer(state: Item[], action: Action) {
   }
 }
 
-const DiaryStateContext = createContext<Item[]>([]);
-const DiaryDispatchContext = createContext<DiaryDispatchContext>({
+export const DiaryStateContext = createContext<Item[]>([]);
+export const DiaryDispatchContext = createContext<DiaryDispatchContext>({
   onCreate: () => {},
   onUpdate: () => {},
   onDelete: () => {},
@@ -76,7 +82,7 @@ const DiaryDispatchContext = createContext<DiaryDispatchContext>({
 
 function App() {
   const [items, dispatch] = useReducer(reducer, MOCK_DATA);
-  const id = useRef(3);
+  const id = useRef(4);
 
   const onCreate = ({ createdDate, emotionId, content }: Partial<Item>) => {
     dispatch({
@@ -116,7 +122,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/new" element={<New />} />
-            <Route path="/diary" element={<Diary />} />
+            <Route path="/diary/:id" element={<Diary />} />
             <Route path="/edit/:id" element={<Edit />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
