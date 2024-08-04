@@ -5,13 +5,20 @@ const EmotionItem = ({
   emotionId,
   emotionName,
   isSelected,
+  onClick,
 }: {
   emotionId: number;
   emotionName: string;
   isSelected: boolean;
+  onClick: () => void;
 }) => {
   return (
-    <div className={`EmotionItem ${isSelected ? `EmotionItem-on-${emotionId}` : ""} `}>
+    <div
+      className={`EmotionItem ${
+        isSelected ? `EmotionItem-on-${emotionId}` : ""
+      } `}
+      onClick={onClick}
+    >
       <img className="emotion-img" src={getEmtionImages(emotionId)} />
       <div className="emotion-name">{emotionName}</div>
     </div>
