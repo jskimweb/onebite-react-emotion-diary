@@ -2,8 +2,8 @@ import "./Header.css";
 
 interface Props {
   title: string;
-  leftChild: JSX.Element;
-  rightChild: JSX.Element;
+  leftChild?: JSX.Element;
+  rightChild?: JSX.Element;
 }
 
 const Header = ({ title, leftChild, rightChild }: Props) => {
