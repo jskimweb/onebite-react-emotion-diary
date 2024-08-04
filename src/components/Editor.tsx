@@ -71,7 +71,7 @@ const Editor = ({
                 onChangeInput({
                   target: {
                     name: "emotionId",
-                    value: String(item.emotionId),
+                    value: item.emotionId,
                   },
                 })
               }
