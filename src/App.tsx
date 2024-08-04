@@ -6,6 +6,7 @@ import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 import Notfound from "./pages/Notfound";
+import { MOCK_DATA } from "./utils/constants.ts";
 
 export interface Item {
   id?: number;
@@ -36,27 +37,6 @@ interface DiaryDispatchContext {
   onUpdate: (item: Item) => void;
   onDelete: (id: number) => void;
 }
-
-const MOCK_DATA: Item[] = [
-  {
-    id: 3,
-    createdDate: new Date("2024-08-03").getTime(),
-    emotionId: 3,
-    content: "3번 일기 내용",
-  },
-  {
-    id: 2,
-    createdDate: new Date("2024-08-02").getTime(),
-    emotionId: 2,
-    content: "2번 일기 내용",
-  },
-  {
-    id: 1,
-    createdDate: new Date("2024-07-02").getTime(),
-    emotionId: 1,
-    content: "1번 일기 내용",
-  },
-];
 
 function reducer(state: Item[], action: Action) {
   switch (action.type) {

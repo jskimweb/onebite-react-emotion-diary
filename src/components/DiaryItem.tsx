@@ -8,21 +8,24 @@ const DiaryItem = ({ id, emotionId, createdDate, content }: Item) => {
   const nav = useNavigate();
 
   return (
-    <div className="DiaryItem">
-      <div
-        className={`img-section img-section-${emotionId}`}
-        onClick={() => nav(`/diary/${id}`)}
-      >
+    <div className="DiaryItem" onClick={() => nav(`/diary/${id}`)}>
+      <div className={`img-section img-section-${emotionId}`}>
         <img src={getEmtionImages(emotionId)} />
       </div>
-      <div className="info-section" onClick={() => nav(`/edit/${id}`)}>
+      <div className="info-section">
         <div className="created-date">
           {new Date(createdDate).toLocaleDateString()}
         </div>
         <div className="content">{content}</div>
       </div>
       <div className="button-section">
-        <Button text={"수정하기"} />
+        <Button
+          text={"수정하기"}
+          onClick={(e: MouseEvent) => {
+            e.stopPropagation();
+            nav(`/edit/${id}`);
+          }}
+        />
       </div>
     </div>
   );
