@@ -3,7 +3,7 @@ import "./Button.css";
 interface Props {
   text: string;
   type?: "DEFAULT" | "POSITIVE" | "NEGATIVE";
-  onClick: () => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({ text, type = "DEFAULT", onClick }: Props) => {

@@ -40,7 +40,12 @@ const Editor = ({
 
     setInput({
       ...input,
-      [name]: name === "createdDate" ? new Date(value) : value,
+      [name]:
+        name === "createdDate"
+          ? new Date(value)
+          : name === "emotionId"
+          ? Number(value)
+          : value,
     });
   };
 
@@ -71,9 +76,9 @@ const Editor = ({
                 onChangeInput({
                   target: {
                     name: "emotionId",
-                    value: item.emotionId,
+                    value: String(item.emotionId),
                   },
-                })
+                } as ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)
               }
             />
           ))}

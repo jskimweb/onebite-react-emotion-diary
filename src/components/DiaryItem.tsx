@@ -21,7 +21,7 @@ const DiaryItem = ({ id, emotionId, createdDate, content }: Item) => {
       <div className="button-section">
         <Button
           text={"수정하기"}
-          onClick={(e: MouseEvent) => {
+          onClick={(e) => {
             e.stopPropagation();
             nav(`/edit/${id}`);
           }}
