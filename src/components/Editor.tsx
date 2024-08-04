@@ -11,7 +11,7 @@ const Editor = ({
   initData,
   onSubmit,
 }: {
-  initData: Item;
+  initData?: Item;
   onSubmit: (input: {
     createdDate: Date;
     emotionId: number;
