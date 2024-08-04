@@ -8,7 +8,7 @@ import Edit from "./pages/Edit";
 import Notfound from "./pages/Notfound";
 
 export interface Item {
-  id: number;
+  id?: number;
   createdDate: number;
   emotionId: number;
   content: string;
@@ -32,7 +32,7 @@ interface DeleteAction {
 type Action = CreateAction | UpdateAction | DeleteAction;
 
 interface DiaryDispatchContext {
-  onCreate: (item: Partial<Item>) => void;
+  onCreate: (item: Item) => void;
   onUpdate: (item: Item) => void;
   onDelete: (id: number) => void;
 }
@@ -84,7 +84,7 @@ function App() {
   const [items, dispatch] = useReducer(reducer, MOCK_DATA);
   const id = useRef(4);
 
-  const onCreate = ({ createdDate, emotionId, content }: Partial<Item>) => {
+  const onCreate = ({ createdDate, emotionId, content }: Item) => {
     dispatch({
       type: "CREATE",
       data: {

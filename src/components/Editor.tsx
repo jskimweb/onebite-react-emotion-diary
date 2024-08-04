@@ -1,8 +1,9 @@
 import "./Editor.css";
 import EmotionItem from "./EmotionItem";
 import Button from "./Button";
-import { useState } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { type Item } from "../App";
 
 const EMOTION_LIST = [
   {
@@ -44,8 +45,10 @@ const getStringedDate = (date: Date) => {
 };
 
 const Editor = ({
+  initData,
   onSubmit,
 }: {
+  initData: Item;
   onSubmit: (input: {
     createdDate: Date;
     emotionId: number;
@@ -59,8 +62,16 @@ const Editor = ({
   });
   const nav = useNavigate();
 
+  useEffect(() => {
+    if (initData)
+      setInput({
+        ...initData,
+        createdDate: new Date(initData.createdDate),
+      });
+  }, [initData]);
+
   const onChangeInput = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
 
@@ -97,7 +108,7 @@ const Editor = ({
                 onChangeInput({
                   target: {
                     name: "emotionId",
-                    value: item.emotionId,
+                    value: String(item.emotionId),
                   },
                 })
               }
