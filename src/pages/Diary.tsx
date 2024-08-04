@@ -4,11 +4,13 @@ import Viewer from "../components/Viewer";
 import { useParams, useNavigate } from "react-router-dom";
 import useDiary from "../hooks/useDiary";
 import { getStringedDate } from "../utils/get-stringed-date";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Diary = () => {
   const params = useParams();
   const nav = useNavigate();
   const currDiaryItem = useDiary(Number(params.id));
+  usePageTitle(`${params.id}번 일기`);
 
   if (!currDiaryItem) return <div>데이터 로딩중...!</div>;
 
